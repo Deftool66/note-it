@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './noteView.css';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useNotes } from '../notesContext';
 import { updateNote, deleteNote } from '../api.service';
 import { useDebouncedCallback } from 'use-debounce';
+import { MyQuill } from './MyQuill';
 
 export const NoteView = () => {
-  const { notes, refreshNotes, note, setNote, setNoteList, noteList } =
-    useNotes();
+  const { notes, refreshNotes, note, setNote } = useNotes();
 
   useEffect(() => {
     if (notes.length > 0) {
@@ -28,21 +28,19 @@ export const NoteView = () => {
   }, [notes]);
 
   useEffect(() => {
-    console.log('note updatedDB', note);
+    // console.log('note updatedDB', note);
     updateDb(note);
   }, [note]);
 
-  const debouncedBody = async value => {
-    await setNote(oldNote => {
-      return {
-        ...oldNote,
-        body: value,
-      };
-    });
-  };
+  // const debouncedBody = async value => {
+  //   await setNote(oldNote => {
+  //     return {
+  //       ...oldNote,
+  //       body: value,
+  //     };
+  //   });
+  // };
   const debouncedTitle = event => {
-    // console.log('value:', event.target.value);
-
     setNote(oldNote => {
       const newNote = {
         ...oldNote,
@@ -55,51 +53,47 @@ export const NoteView = () => {
     // setNoteList(noteList.unshift(note));
   };
   const updateDb = useDebouncedCallback(note => {
-    // console.log('note sent to the db', note);
     updateNote(note);
-    // refreshNotes();
   }, 100);
   //delete note on click function
   const handleDeleteNote = async () => {
-    // console.log('note', note);
-    // console.log('delete note');
     await deleteNote(note);
     refreshNotes();
   };
 
-  const modules = {
-    toolbar: [
-      [{ font: [] }],
-      [{ header: [1, 2, 3, 4, 5, 6, false] }],
-      ['bold', 'italic', 'underline', 'strike'],
-      [{ color: [] }, { background: [] }],
-      [{ script: 'sub' }, { script: 'super' }],
-      ['blockquote', 'code-block'],
-      [{ list: 'ordered' }, { list: 'bullet' }],
-      [{ indent: '-1' }, { indent: '+1' }, { align: [] }],
-      ['link', 'image', 'video'],
-      ['clean'],
-    ],
-  };
-  const formats = [
-    'font',
-    'header',
-    'bold',
-    'italic',
-    'underline',
-    'strike',
-    'color',
-    'background',
-    'script',
-    'blockquote',
-    'code-block',
-    'list',
-    'bullet',
-    'indent',
-    'link',
-    'image',
-    'video',
-  ];
+  // const modules = {
+  //   toolbar: [
+  //     [{ font: [] }],
+  //     [{ header: [1, 2, 3, 4, 5, 6, false] }],
+  //     ['bold', 'italic', 'underline', 'strike'],
+  //     [{ color: [] }, { background: [] }],
+  //     [{ script: 'sub' }, { script: 'super' }],
+  //     ['blockquote', 'code-block'],
+  //     [{ list: 'ordered' }, { list: 'bullet' }],
+  //     [{ indent: '-1' }, { indent: '+1' }, { align: [] }],
+  //     ['link', 'image', 'video'],
+  //     ['clean'],
+  //   ],
+  // };
+  // const formats = [
+  //   'font',
+  //   'header',
+  //   'bold',
+  //   'italic',
+  //   'underline',
+  //   'strike',
+  //   'color',
+  //   'background',
+  //   'script',
+  //   'blockquote',
+  //   'code-block',
+  //   'list',
+  //   'bullet',
+  //   'indent',
+  //   'link',
+  //   'image',
+  //   'video',
+  // ];
 
   return (
     <div className='noteView relative'>
@@ -131,7 +125,9 @@ export const NoteView = () => {
         </div>
       </div>
 
-      <div>
+      <MyQuill note={note} setNote={setNote} />
+
+      {/* <div>
         <ReactQuill
           theme='snow'
           placeholder='Write something amazing...'
@@ -141,7 +137,7 @@ export const NoteView = () => {
           formats={formats}
           onChange={debouncedBody}
         />
-      </div>
+      </div> */}
       <div className='mt-20 ml-30'>
         {/* add to favorites button */}
         <button

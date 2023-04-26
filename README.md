@@ -1,17 +1,39 @@
-# Codeworks code reviews
+<h1 align="center">Welcome to note-it 👋</h1>
+<p>
+  <a href="https://www.npmjs.com/package/note-it" target="_blank">
+    <img alt="Version" src="https://img.shields.io/npm/v/note-it.svg">
+  </a>
+</p>
 
-This repo is used to do code reviews for entire projects from students.
+> A Note taking App project
 
-## Getting started
+## Install
 
-- Make sure you have a linter set up (e.g. [ESLint](https://eslint.org/)), otherwise please add one to your project and lint the code.
-- Check that you have a `.gitignore` file in your repo, otherwise copy the one you find in this repo and add it to your project as a starting point.
-- In case you have already forked this repo in the past, before continuing first delete your fork (any associated pull requests are not deleted, don’t worry).
+```sh
+npm install
+```
 
-## How it works
+## Usage
 
-- Once your project is ready, fork this repo and clone the fork on your computer.
-- Copy all the code from your project to that clone (without overwriting its `.git` folder), and include any dotfiles (which are hidden files starting with a dot, typically used for configuration purposes).
-- Commit all your code and push it to your fork.
-- Send a pull request (feel free to add a comment to your PR, in case it’s useful for the reviewer).
-- You will receive a notification on GitHub once the code review is completed.
+```sh
+npm start nodemon server.js
+```
+
+## Run tests
+
+```sh
+npm test
+```
+
+## Author
+
+👤 **Tarik**
+
+* Github: [@Deftool66](https://github.com/Deftool66)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
