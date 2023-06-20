@@ -12,7 +12,7 @@ export const getNotes = () => {
 };
 
 export const createNote = note => {
-  console.log('i am the note inside the createnote', note);
+  //console.log('i am the note inside the createnote', note);
   return fetch(`${baseUrl}/notes`, {
     method: 'POST',
     headers: {
@@ -25,7 +25,7 @@ export const createNote = note => {
 };
 
 export const deleteNote = note => {
-  console.log('i am the note inside the deletenote', note._id);
+  //console.log('i am the note inside the deletenote', note._id);
   return fetch(`${baseUrl}/notes/${note._id}`, {
     method: 'DELETE',
     headers: {
@@ -35,7 +35,7 @@ export const deleteNote = note => {
 };
 
 export const updateNote = note => {
-  console.log('i am the note inside the updatenote', note);
+  //console.log('i am the note inside the updatenote', note);
   return fetch(`${baseUrl}/notes/${note._id}`, {
     method: 'PUT',
     headers: {

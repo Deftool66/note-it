@@ -5,7 +5,7 @@ import 'react-quill/dist/quill.snow.css';
 import { useNotes } from '../notesContext';
 // import { updateNote, deleteNote } from '../api.service';
 // import { useDebouncedCallback } from 'use-debounce';
-import { saveImageToCloudinary, loadImageFromCloudinary } from '../cloudinary';
+// import { saveImageToCloudinary, loadImageFromCloudinary } from '../cloudinary';
 
 export const MyQuill = () => {
   const { note, setNote } = useNotes();
@@ -78,12 +78,12 @@ export const MyQuill = () => {
       <ReactQuill
         theme='snow'
         placeholder='Write something amazing...'
-        className='h-96 mb-3 overflow-auto'
+        className='h-96 mb-3 overflow-y-scroll'
         value={note.body}
         modules={modules}
         formats={formats}
-        onImageUpload={handleImageUpload}
-        onImageLoad={handleImageLoad}
+        // onImageUpload={handleImageUpload}
+        // onImageLoad={handleImageLoad}
         onChange={debouncedBody}
       />
     </div>

@@ -8,6 +8,7 @@ import { Signup } from './pages/Signup';
 
 import React from 'react';
 import { NotesProvider } from './notesContext';
+import { LandingPage } from './pages/LandingPage';
 
 export const NotesContext = React.createContext();
 
@@ -21,6 +22,7 @@ function App() {
         <NotesProvider>
           <Router>
             <Routes>
+              <Route path='/' element={<LandingPage />} />
               <Route path='/home' element={<Home />} />
               <Route path='/login' element={<Login />} />
               <Route path='/signup' element={<Signup />} />

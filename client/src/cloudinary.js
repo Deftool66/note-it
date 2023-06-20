@@ -1,9 +1,9 @@
 // saveImageToCloudinary function
 function saveImageToCloudinary(imageData) {
-  const cloudName = 'your-cloud-name';
+  const cloudName = 'deftool';
   const unsignedUploadPreset = 'your-upload-preset';
 
-  const url = `https://api.cloudinary.com/v1_1/${deftool}/upload`;
+  const url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
   const xhr = new XMLHttpRequest();
   const fd = new FormData();
   xhr.open('POST', url, true);

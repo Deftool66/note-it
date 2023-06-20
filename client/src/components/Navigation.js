@@ -16,9 +16,9 @@ export const Navigation = () => {
     setNote,
   } = useNotes();
   const handleSearch = value => {
-    console.log(value.target.value);
+    //console.log(value.target.value);
     searchNotes(value.target.value);
-    console.log('search');
+    //console.log('search');
   };
   const showAllNotes = () => {
     setNoteBooks(false);
